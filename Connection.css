@@ -1,0 +1,31 @@
+body{
+	background-color:grey;
+}
+
+#mes{
+				display: flex;
+				flex-direction: row;
+				padding-left:80px;
+				
+				
+}
+#droite{
+	margin-left: 10px;
+}
+
+#pdroite{
+	display: flex;
+	flex-direction: row;
+	margin-top:80px;
+	position:absolute;
+	top: 0px;
+	padding-left:800px;
+	padding-top:50px;
+}
+
+#x {
+	padding-left:800px;
+	padding-top:80px;
+	position:absolute;
+	top: 0px;
+}

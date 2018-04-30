@@ -1,0 +1,83 @@
+body{
+	background-color:grey;
+}
+
+#menu0 { 
+			  position: absolute;
+			  top: 0px;
+			  left: 0px;
+			  float: left;
+              width: 207px;
+			  height: 40px;
+			  margin-top: 0px;
+			  background-color:#E6E6FA;
+			  padding-left: 0px;
+			  padding-top:10px;
+			  text-align: center;
+			  outline-color:solid 5px black;
+}
+#menu1 { 
+			  position: absolute;
+			  top: 0px;
+			  left: 209px;
+			  float: left;
+              width: 207px;
+			  height: 40px;
+			  margin-top: 0px;
+			  background-color: #E6E6FA;
+			  padding-left: 0px;
+			  padding-top:10px;
+			  text-align: center;
+}
+#menu2 { 
+			  position: absolute;
+			  top: 0px;
+			  left: 209px;
+			  float: left;
+              width: 207px;
+			  height: 40px;
+			  margin-top: 0px;
+			  background-color:#E6E6FA;
+			  padding-left: 0px;
+			  padding-top:10px;
+			  text-align: center;
+}
+#menu3 { 
+			  position: absolute;
+			  top: 0px;
+			  left: 209px;
+			  float: left;
+              width: 207px;
+			  height: 40px;
+			  margin-top: 0px;
+			  background-color: #E6E6FA;
+			  padding-left: 0px;
+			  padding-top:10px;
+			  text-align: center;
+}
+#menu4 { 
+			  position: absolute;
+			  top: 0px;
+			  left: 209px;
+			  float: left;
+              width: 207px;
+			  height: 40px;
+			  margin-top: 0px;
+			  background-color:#E6E6FA;
+			  padding-left: 0px;
+			  padding-top:10px;
+			  text-align: center;
+}
+#menu5 { 
+			  position: absolute;
+			  top: 0px;
+			  left: 209px;
+			  float: left;
+              width: 207px;
+			  height: 40px;
+			  margin-top: 0px;
+			  background-color: #E6E6FA;
+			  padding-left: 0px;
+			  padding-top:10px;
+			  text-align: center;
+}
