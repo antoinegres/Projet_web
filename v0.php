@@ -14,8 +14,8 @@
         //$sql1 = "INSERT INTO utilisateur (numero, Nom, Prenom, email, mdp, statut, admin) VALUES(5, 'Paire', 'Benoit', 'benoit.paire@edu.ece.fr', 'papa', 'imaginaire', 0)";
         //$rep1 = mysqli_query($db_handle,$sql1);
         
-        $sql2 = "DELETE FROM utilisateur WHERE utilisateur.numero=5";
-        $rep2 = mysqli_query($db_handle,$sql2);
+        //$sql2 = "DELETE FROM utilisateur WHERE utilisateur.numero=5";
+        //$rep2 = mysqli_query($db_handle,$sql2);
         
         $sql = "SELECT * FROM utilisateur";
         $rep = mysqli_query($db_handle,$sql);
@@ -34,5 +34,6 @@
     else{
         echo'Database not found'; 
     }
+
     mysqli_close($db_handle);
 ?>
