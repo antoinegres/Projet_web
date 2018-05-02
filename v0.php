@@ -11,22 +11,20 @@
         //$sql0 = "SELECT * FROM utilisateur";
         //$rep0 = mysqli_query($db_handle,$sql0);
         
-        //$sql1 = "INSERT INTO utilisateur (numero, Nom, Prenom, email, mdp, statut, admin) VALUES(5, 'Paire', 'Benoit', 'benoit.paire@edu.ece.fr', 'papa', 'imaginaire', 0)";
+        //$sql1 = "INSERT INTO utilisateur (id, nom, prenom, mail, mdp, statut, admin) VALUES(5, 'Paire', 'Benoit', 'benoit.paire@edu.ece.fr', 'papa', 'imaginaire', 0)";
         //$rep1 = mysqli_query($db_handle,$sql1);
         
-        //Leroytest
-        
-        //$sql2 = "DELETE FROM utilisateur WHERE utilisateur.numero=5";
+        //$sql2 = "DELETE FROM utilisateur WHERE utilisateur.id=5";
         //$rep2 = mysqli_query($db_handle,$sql2);
         
         $sql = "SELECT * FROM utilisateur";
         $rep = mysqli_query($db_handle,$sql);
         
         while($data=mysqli_fetch_assoc($rep)){
-            echo"numero : ".$data["numero"]."<br>";
-            echo"Nom : ".$data["Nom"]."<br>";
-            echo"Prenom : ".$data["Prenom"].'<br>';
-            echo"email : ".$data["email"]."<br>";
+            echo"id : ".$data["id"]."<br>";
+            echo"nom : ".$data["nom"]."<br>";
+            echo"prenom : ".$data["prenom"].'<br>';
+            echo"mail : ".$data["mail"]."<br>";
             echo"mdp : ".$data["mdp"]."<br>";
             echo"statut : ".$data["statut"]."<br>";
             echo"admin : ".$data["admin"]."<br>";
