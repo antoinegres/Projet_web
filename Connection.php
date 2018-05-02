@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 
+
 <?php
-$bdd = new PDO('mysql:host=127.0.0.1; dbname=maclasse','root','');
+
+$bdd = new PDO('mysql:host=127.0.0.1;dbname=maclasse;charset=utf8', 'root', '');
 if(isset($_POST['submit'])){
 	if(($_POST['nom']) && ($_POST['prenom']) && ($_POST['age']) && ($_POST['mail']) && ($_POST['mdp']))
 	{
@@ -12,18 +14,46 @@ if(isset($_POST['submit'])){
 		$mdp = $_POST['mdp'];
 		$statut = $_POST['statut'];
 		$administrateur= 0;
-		$insert_auteur=$bdd->prepare('INSERT INTO test (Nom,Prenom,E-mail,Mot de Passe, Age,Statut,Administrateur) VALUES(?,?,?,?,?,?,?)');
-		$insert_auteur->execute(array($nom, $prenom, $mail, $mdp, $age, $statut,0));
-		$erreur1="Votre compte a bien été créé.";
+		$req = $bdd->prepare('INSERT INTO test(nom, prenom, mail, mdp, age, statut, administrateur) VALUES(:nom, :prenom, :mail, :mdp, :age, :statut, :administrateur)');
+		$req->execute(array(
+			'nom' => $nom,
+			'prenom' => $prenom,
+			'mail' => $mail,
+			'mdp' => $mdp,
+			'age' => $age,
+			'statut' => $statut,
+			'administrateur' => $administrateur
+			));
+		$erreur1= "Votre compte a bien été créé .";
 	}		
 	else
 	{
 		$erreur= "Veuillez remplir tous les champs .";
 	}
 }
-
-
+if(isset($_POST['submit_connection'])){
+	if(($_POST['mail_connection']) && ($_POST['mdp_connection'])){
+		
+		$mail_connection= htmlspecialchars($_POST['mail_connection']);
+		$mdp_connection= ($_POST['mdp_connection']);
+		$req = $bdd->prepare("SELECT * FROM test WHERE mail= ? AND mdp= ?");
+		$req -> execute(array($mail_connection, $mdp_connection));
+		$connect = $req->rowCount();
+		if($connect==1){
+			$erreur4="Connection réussie!!!";
+		}
+		else
+		{
+			$erreur3= "L'adresse mail ou le mot de passe saisie est invalide !";
+		}
+	}
+	else
+	{
+		$erreur2= "Veuillez remplir tous les champs .";
+	}
+}
 ?>
+
 
 
 <html>
@@ -146,6 +176,21 @@ if(isset($_POST['submit'])){
 					</tr>
 				</table>
 			</form>
+			<?php
+			if (isset($erreur2))
+			{
+				echo '<font color="red">'.$erreur2."</font>";
+			}
+			if (isset($erreur3))
+			{
+				echo '<font color="red">'.$erreur3."</font>";
+			}
+			if (isset($erreur4))
+			{
+				echo '<font color="green">'.$erreur4."</font>";
+			}
+			?>
 		</div>
 	</body>
 </html>
+
