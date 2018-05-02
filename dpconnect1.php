@@ -1,29 +1,9 @@
 <!DOCTYPE html>
 <?php
-session_start();
+
 $bdd = new PDO('mysql:host=127.0.0.1;dbname=bddece;charset=utf8', 'root', '');
 if(isset($_POST['submit_recherche'])){
-	if(($_POST['recherche_nom']) && ($_POST['recherche_prenom'])){
-		
-		$recherche_nom= htmlspecialchars($_POST['recherche_nom']);
-		$recherche_prenom= htmlspecialchars($_POST['recherche_prenom']);
-		$req = $bdd->prepare("SELECT * FROM utilisateur WHERE nom= ? AND prenom= ?");
-		$req -> execute(array($recherche_nom, $recherche_prenom));
-		$connect = $req->rowCount();
-		$_SESSION['nom']=$recherche_nom;
-		if($connect>0){
-			$ok="Connection réussie!!!";
-			header("Location:dpconnect1.php");
-		}
-		else
-		{
-			$erreur2= "Aucun résultat ne correspond au nom et prénom saisie";
-		}
-	}
-	else
-	{
-		$erreur1= "Veuillez remplir tous les champs .";
-	}
+	header("Location:dpconnect.php");
 }
 ?>
 
@@ -37,17 +17,17 @@ if(isset($_POST['submit_recherche'])){
 	</head>
 	
 	<body>
-	<p>hgh</p>
+	<p>...</p>
 		<div id="corps" align="center">
 			<form method="POST" action=""><br/>
-				<label>Rechercher un Contact :</label>
-				<input type="text" name="recherche_nom" id="recherche_nom" placeholder="Nom" />
-				<input type="text" name="recherche_prenom" id="recherche_prenom" placeholder="Prénom" />
-				<input type="submit" value="Rechercher" name="submit_recherche" id="submit_recherche"/>
-			</form>
-			<form method="POST" action="dpconnect1.php"><br/>
+				<label>Nouvelle Recherche :</label>
+				<input type="submit" value="Valider" name="submit_recherche" id="submit_recherche"/>
 			</form>
 			<?php 
+			if (isset($erreur1))
+			{
+				echo '<font color="red">'.$erreur1."</font>";
+			}
 			if (isset($erreur1))
 			{
 				echo '<font color="red">'.$erreur1."</font>";
@@ -62,6 +42,7 @@ if(isset($_POST['submit_recherche'])){
 			}
 			?>
 			<?php
+			
 			try
 			{
 				// On se connecte à MySQL
@@ -74,12 +55,13 @@ if(isset($_POST['submit_recherche'])){
 			}
 
 			// Si tout va bien, on peut continuer
-
 			// On récupère tout le contenu de la table jeux_video
-			$reponse = $bdd->query('SELECT * FROM utilisateur  ');
+			session_start();
+			$blaze=$_SESSION['nom'];
+			$reponse1 = $bdd->query("SELECT * FROM utilisateur WHERE nom='$blaze'");
 
 			// On affiche chaque entrée une à une
-			while ($donnees = $reponse->fetch())
+			while ($donnees = $reponse1->fetch())
 			{
 			?>
 				<p>
@@ -88,8 +70,7 @@ if(isset($_POST['submit_recherche'])){
 			<?php
 			}
 
-			$reponse->closeCursor(); // Termine le traitement de la requête
-
+			
 			?>
 		</div>
 		<div id="menu">
