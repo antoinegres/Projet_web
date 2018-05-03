@@ -2,47 +2,6 @@ body{
 	background-color:grey;
 }
 
-#nom{
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	width: 624px;
-	height: 700px;
-	margin-top: 0px;
-	background-color:#E6E6FA;
-	padding-top: 80px;
-}
-#prenom{
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	width: 624px;
-	height: 550px;
-	margin-top: 0px;
-	background-color:#E6E6FA;
-	padding-top: 80px;
-}
-#statut{
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	width: 624px;
-	height: 600px;
-	margin-top: 0px;
-	background-color:#E6E6FA;
-	padding-top: 80px;
-}
-#email{
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	width: 624px;
-	height: 650px;
-	margin-top: 0px;
-	background-color:#E6E6FA;
-	padding-top: 80px;
-}
-
 #menu0 { 
 			  position: absolute;
 			  top: 0px;
@@ -122,3 +81,46 @@ body{
 			  padding-top:10px;
 			  text-align: center;
 }
+
+#Nom{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 624px;
+	height: 700px;
+	margin-top: 0px;
+	background-color:#E6E6FA;
+	padding-top: 80px;
+}
+#Prenom{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 624px;
+	height: 550px;
+	margin-top: 0px;
+	background-color:#E6E6FA;
+	padding-top: 80px;
+}
+#Statut{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 624px;
+	height: 600px;
+	margin-top: 0px;
+	background-color:#E6E6FA;
+	padding-top: 80px;
+}
+#Mail{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 624px;
+	height: 650px;
+	margin-top: 0px;
+	background-color:#E6E6FA;
+	padding-top: 80px;
+}
+
+

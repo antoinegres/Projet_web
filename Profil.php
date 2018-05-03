@@ -5,7 +5,7 @@
 			try
 			{
 				// On se connecte à MySQL
-				$bdd = new PDO('mysql:host=127.0.0.1;dbname=test;charset=utf8', 'root', '');
+				$bdd = new PDO('mysql:host=127.0.0.1;dbname=bddece;charset=utf8', 'root', '');
 			}
 			catch(Exception $e)
 			{
@@ -16,14 +16,17 @@
 			// Si tout va bien, on peut continuer
 
 			// On récupère tout le contenu de la table jeux_video
-			$reponse = $bdd->query('SELECT * FROM profil');
+			$reponse = $bdd->query('SELECT * FROM utilisateur');
 
 			// On affiche chaque entrée une à une
 			while ($donnees = $reponse->fetch())
 			{
 			?>
 				<p>
-				<strong>Ami</strong> : <div id="nom" align="center"> <?php echo $donnees['nom']; ?> </div> <div id="prenom" align="center"> <?php echo $donnees['prenom']; ?> </div> <div id="statut" align="center"> <?php echo $donnees['statut']; ?> </div> <div id="email" align="center"> <?php echo $donnees['email']; ?> </div>  
+				<strong>Ami</strong> : <div id="Nom" align="center"> <?php echo $donnees['nom']; ?> </div> 
+									   <div id="Prenom" align="center"> <?php echo $donnees['prenom']; ?> </div> 
+									   <div id="Mail" align="center"> <?php echo $donnees['mail']; ?> </div> 
+									   <div id="Statut" align="center"> <?php echo $donnees['statut']; ?> </div>  
 			   </p>
 			<?php
 			}
