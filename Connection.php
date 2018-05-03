@@ -1,9 +1,6 @@
 <!DOCTYPE html>
-
-
 <?php
-
-$bdd = new PDO('mysql:host=127.0.0.1;dbname=bddece;charset=utf8', 'root', '');
+$bdd = new PDO('mysql:host=127.0.0.1;dbname=maclasse;charset=utf8', 'root', '');
 if(isset($_POST['submit'])){
 	if(($_POST['nom']) && ($_POST['prenom']) && ($_POST['age']) && ($_POST['mail']) && ($_POST['mdp']))
 	{
@@ -14,7 +11,8 @@ if(isset($_POST['submit'])){
 		$mdp = $_POST['mdp'];
 		$statut = $_POST['statut'];
 		$administrateur= 0;
-		$req = $bdd->prepare('INSERT INTO utilisateur(nom, prenom, mail, mdp, age, statut, admin) VALUES(:nom, :prenom, :mail, :mdp, :age, :statut, :administrateur)');
+		$req = $bdd->prepare('INSERT INTO test(nom, prenom, mail, mdp, age, statut, administrateur) VALUES(:nom, :prenom, :mail, :mdp, :age, :statut, :administrateur)');
+
 		$req->execute(array(
 			'nom' => $nom,
 			'prenom' => $prenom,
@@ -36,7 +34,7 @@ if(isset($_POST['submit_connection'])){
 		
 		$mail_connection= htmlspecialchars($_POST['mail_connection']);
 		$mdp_connection= ($_POST['mdp_connection']);
-		$req = $bdd->prepare("SELECT * FROM utilisateur WHERE mail= ? AND mdp= ?");
+		$req = $bdd->prepare("SELECT * FROM test WHERE mail= ? AND mdp= ?");
 		$req -> execute(array($mail_connection, $mdp_connection));
 		$connect = $req->rowCount();
 		if($connect==1){
