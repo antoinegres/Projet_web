@@ -93,9 +93,9 @@ if(isset($_POST['submit_recherche'])){
 			?>
 		</div>
 		<div id="menu">
-			<div style="border-color: black" id="menu0"><a href="Accueil.html.html" >Accueil</a><div>
-			<div style="border-color: black" id="menu1"><a href="Mon reseau.html.html">Mon Réseau</a><div>
-			<div style="border-color: black" id="menu2"><a href="Vous.html" >Vous</a><div>
+			<div style="border-color: black" id="menu0"><a href="Accueil.html" >Accueil</a><div>
+			<div style="border-color: black" id="menu1"><a href="dpconnect.php">Mon Réseau</a><div>
+			<div style="border-color: black" id="menu2"><a href="Vous.php" >Vous</a><div>
 			<div style="border-color: black" id="menu3"><a href="Notifications.html" >Notifications</a><div>
 			<div style="border-color: black" id="menu4"><a href="Messages.html" >Messages</a><div>
 			<div style="border-color: black" id="menu5"><a href="Emplois.html" >Emplois</a><div>
