@@ -1,0 +1,25 @@
+body{
+	background-color:grey;
+}
+
+#gauche{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 624px;
+	height: 500px;
+	margin-top: 0px;
+	background-color:#E6E6FA;
+	padding-top: 80px;
+}
+
+#droite{
+	position: absolute;
+	top: 0px;
+	left: 626px;
+	width: 624px;
+	height: 480px;
+	margin-top: 0px;
+	background-color:#E6E6FA;
+	padding-top: 100px;
+}
