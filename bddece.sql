@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le :  mer. 02 mai 2018 à 10:29
+-- Généré le :  ven. 04 mai 2018 à 12:03
 -- Version du serveur :  5.6.38
 -- Version de PHP :  7.2.1
 
@@ -130,10 +130,21 @@ CREATE TABLE `commenter` (
 
 CREATE TABLE `emploi` (
   `idem` int(11) NOT NULL,
-  `employeur` text NOT NULL,
+  `employeur` int(11) NOT NULL,
   `dateem` datetime NOT NULL,
   `poste` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `emploi`
+--
+
+INSERT INTO `emploi` (`idem`, `employeur`, `dateem`, `poste`) VALUES
+(1, 1, '2018-05-03 15:00:00', 'prof à l\'ece'),
+(2, 2, '2018-05-03 14:00:00', 'prof à l\'ebs'),
+(3, 1, '2018-05-03 13:00:00', 'surveillant à l\'ece'),
+(0, 0, '2018-05-04 08:34:59', ' enseignant-chercheur '),
+(0, 0, '2018-05-04 08:47:50', ' prof à esce ');
 
 -- --------------------------------------------------------
 
@@ -180,12 +191,25 @@ CREATE TABLE `partager` (
 
 CREATE TABLE `publication` (
   `idpu` int(11) NOT NULL,
+  `publieur` int(11) NOT NULL,
   `doc` text NOT NULL,
   `lieu` text NOT NULL,
   `date` datetime NOT NULL,
   `ressenti` text NOT NULL,
   `activité` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `publication`
+--
+
+INSERT INTO `publication` (`idpu`, `publieur`, `doc`, `lieu`, `date`, `ressenti`, `activité`) VALUES
+(1, 1, 'Julien le plus beau', 'ECE', '2018-05-03 16:52:24', 'Pensif', 'Code'),
+(2, 2, 'Photo', 'Paris', '2018-05-03 16:55:24', 'Content', 'Sportive'),
+(3, 3, 'Video', 'Bordeaux', '2018-05-03 16:53:24', 'Joyeux', 'Filmer'),
+(4, 4, 'Texte', 'Soulac', '2018-05-03 16:54:24', 'Nostalgique', 'Conduire'),
+(0, 0, ' pic ', ' LA ', '2018-05-04 12:00:06', ' fun ', ' code '),
+(0, 0, ' vid ', ' Paris ', '2018-05-04 12:02:25', ' triste ', ' velo ');
 
 -- --------------------------------------------------------
 
@@ -210,6 +234,7 @@ CREATE TABLE `utilisateur` (
   `prenom` text NOT NULL,
   `mail` text NOT NULL,
   `mdp` text NOT NULL,
+  `age` int(11) NOT NULL,
   `statut` text NOT NULL,
   `pp` text NOT NULL,
   `couverture` text NOT NULL,
@@ -220,3 +245,9 @@ CREATE TABLE `utilisateur` (
 --
 -- Déchargement des données de la table `utilisateur`
 --
+
+INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `mail`, `mdp`, `age`, `statut`, `pp`, `couverture`, `cv`, `admin`) VALUES
+(1, 'GRES', 'Antoine', 'antoine.gres@edu.ece.fr', 'aaa', 0, 'étudiant', '', '', '', 1),
+(2, 'AVRARD', 'Bérénice', 'berenice.avrard@edu.ece.fr', 'bebe', 0, 'étudiant', '', '', '', 1),
+(3, 'RAMKALIA', 'Leroy', 'leroy.ramkalia@edu.ece.fr', 'lele', 0, 'étudiant', '', '', '', 1),
+(4, 'POYATOS', 'Thomas', 'thomas.poyatos@edu.ece.fr', 'toto', 0, 'étudiant', '', '', '', 0);
