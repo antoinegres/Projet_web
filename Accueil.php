@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html>
 	<head>
@@ -67,7 +67,7 @@
                 // On se connecte à MySQL
                 define('DB_SERVER','localhost');
                 define('DB_USER','root');
-                define('DB_PASS','root');
+                define('DB_PASS','');
                 $database='bddece';
                 $db_handle=mysqli_connect(DB_SERVER,DB_USER,DB_PASS) or die(erreur1);
                 $db_found=mysqli_select_db($db_handle,$database) or die(erreur2);
@@ -103,35 +103,41 @@
             }
         }
             
-        
-        // On se connecte à MySQL
-        define('DB_SERVER','localhost');
-        define('DB_USER','root');
-        define('DB_PASS','root');
-        $database='bddece';
-        $db_handle=mysqli_connect(DB_SERVER,DB_USER,DB_PASS) or die(erreur1);
-        $db_found=mysqli_select_db($db_handle,$database) or die(erreur2);
+        ?>
+		<?php
+			try
+			{
+				// On se connecte à MySQL
+				$bdd = new PDO('mysql:host=127.0.0.1;dbname=bddece;charset=utf8', 'root', '');
+			}
+			catch(Exception $e)
+			{
+				// En cas d'erreur, on affiche un message et on arrête tout
+					die('Erreur : '.$e->getMessage());
+			}
 
-        if($db_found){
-            echo "<br><br>";
-            //echo 'nice';
-            $sql = "SELECT * FROM publication ORDER BY date DESC";
-            $rep = mysqli_query($db_handle,$sql);
-            echo "<br><br><h3>Liste publications:</h3>" ;
-            while($data=mysqli_fetch_assoc($rep)){
-                echo "---------------------------------------------------------------------------------------------------------------------------------<br>";
-                echo  $data["publieur"]." a ajouté une nouvelle publication: <br>"; 
-                echo  "[".$data["doc"]."] Lieu: ".$data["lieu"].", activité: ".$data["activité"].", ressenti:  ".$data["ressenti"];
+			// Si tout va bien, on peut continuer
+
+			// On récupère tout le contenu de la table jeux_video
+			$reponse = $bdd->query('SELECT * FROM publication ORDER BY date DESC');
+
+			// On affiche chaque entrée une à une
+			while ($donnees = $reponse->fetch())
+			{
+			?>
+				<?php
+				echo "---------------------------------------------------------------------------------------------------------------------------------<br>";
+                echo  $donnees["publieur"]." a ajouté une nouvelle publication: <br>"; 
+                echo  "[".$donnees["doc"]."] Lieu: ".$donnees["lieu"].", activité: ".$donnees["activité"].", ressenti:  ".$donnees["ressenti"];
                 echo "<br>---------------------------------------------------------------------------------------------------------------------------------";
                 echo"<br><br>";  
-            }
-            
-        }
-        else{
-                echo'Database not found'; 
-            }
-        mysqli_close($db_handle);    
-        ?>
+				?>
+			<?php
+			}
+
+			$reponse->closeCursor(); // Termine le traitement de la requête
+
+			?>
            
         
 		</div>
