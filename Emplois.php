@@ -9,7 +9,7 @@
 	</head>
 	
 	<body>
-        <p>kjh</p>
+        <p>aaa</p>
         <h1> Emplois </h1>
 		
         <form method="POST" action="">
@@ -24,16 +24,6 @@
             
             if($_POST['poste'])
             {
-                
-                //$poste = $_POST['poste'];
-                
-                //$prenom = htmlspecialchars($_POST['prenom']);
-                //$mail = htmlspecialchars($_POST['mail']);
-                //$age = $_POST['age'];
-                //$mdp = $_POST['mdp'];
-                //$statut = $_POST['statut'];
-                //$admin= 0;
-                
                 
                 // On se connecte à MySQL
                 define('DB_SERVER','localhost');
@@ -58,13 +48,12 @@
                     }
                 mysqli_close($db_handle); 
                 
-                echo "oui";
-                $erreur1= "Votre compte a bien été créé .";
+                //echo "Déclaration envoyé !";
             }		
             else
             {
-                echo "champs";
-                $erreur= "Veuillez remplir tous les champs .";
+                echo "Veuillez bien remplir le champ .";
+                //$erreur= "Veuillez remplir tous les champs .";
             }
         }
             
