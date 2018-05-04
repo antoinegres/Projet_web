@@ -1,3 +1,6 @@
+body{
+	background-color:grey;
+}
 
 #corps {
 	position: absolute;
@@ -10,6 +13,7 @@
 			  padding-left: 0px;
 			  padding-top:100px;
 }
+
 #menu0 { 
 			  position: absolute;
 			  top: 0px;
@@ -88,4 +92,5 @@
 			  padding-left: 0px;
 			  padding-top:10px;
 			  text-align: center;
+
 }

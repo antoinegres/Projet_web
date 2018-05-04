@@ -82,7 +82,7 @@
 			}?>
 		</div>
 		<div id="menu">
-			<div style="border-color: black" id="menu0"><a href="Accueil.html" >Accueil</a><div>
+			<div style="border-color: black" id="menu0"><a href="Accueil.php" >Accueil</a><div>
 			<div style="border-color: black" id="menu1"><a href="dpconnect.php">Mon Réseau</a><div>
 			<div style="border-color: black" id="menu2"><a href="Vous.php" >Vous</a><div>
 			<div style="border-color: black" id="menu3"><a href="Notifications.html" >Notifications</a><div>
