@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-
-
 <?php
+<<<<<<< HEAD
 session_start();
 $bdd = new PDO('mysql:host=127.0.0.1;dbname=bddece;charset=utf8', 'root', '');
+=======
+$bdd = new PDO('mysql:host=127.0.0.1;dbname=maclasse;charset=utf8', 'root', '');
+>>>>>>> dev-ant
 if(isset($_POST['submit'])){
 	if(($_POST['nom']) && ($_POST['prenom']) && ($_POST['age']) && ($_POST['mail']) && ($_POST['mdp']))
 	{
@@ -14,7 +16,12 @@ if(isset($_POST['submit'])){
 		$mdp = $_POST['mdp'];
 		$statut = $_POST['statut'];
 		$administrateur= 0;
+<<<<<<< HEAD
 		$req = $bdd->prepare('INSERT INTO utilisateur(nom, prenom, mail, mdp, age, statut, admin) VALUES(:nom, :prenom, :mail, :mdp, :age, :statut, :administrateur)');
+=======
+		$req = $bdd->prepare('INSERT INTO test(nom, prenom, mail, mdp, age, statut, administrateur) VALUES(:nom, :prenom, :mail, :mdp, :age, :statut, :administrateur)');
+
+>>>>>>> dev-ant
 		$req->execute(array(
 			'nom' => $nom,
 			'prenom' => $prenom,

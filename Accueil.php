@@ -11,6 +11,7 @@
 	
 	<body>
 	<p>hgh</p>
+	
 		<div id="corps" align="center">
 	
 			<?php
@@ -35,6 +36,7 @@
 			{
 			?>
 				<p>
+				<a href=Connection.php> <?php echo publication; ?> </a>
 				   <?php echo '<div class="ami">Publication ami N°'.$donnees['idpu'].':</div>'; ?>   
 				   <?php echo '<br><br>'.$donnees['doc'].' '; ?>  
 				   <?php echo '<br><br><br> <strong> Lieu: </strong>'.$donnees['lieu'].' '; ?> 
