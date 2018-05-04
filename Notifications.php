@@ -1,48 +1,17 @@
 <!DOCTYPE html>
-<?php
-
-$bdd = new PDO('mysql:host=127.0.0.1;dbname=bddece;charset=utf8', 'root', '');
-if(isset($_POST['submit_recherche'])){
-	header("Location:dpconnect.php");
-}
-?>
-
 
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>Formulaire</title>
+		<title>Notification</title>
 		<link rel="stylesheet" type="text/css" href="Accueil.css"/>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	</head>
 	
 	<body>
-	<p>...</p>
-		<div id="corps" align="center">
-			<form method="POST" action=""><br/>
-				<label>Nouvelle Recherche :</label>
-				<input type="submit" value="Valider" name="submit_recherche" id="submit_recherche"/>
-			</form>
-			<?php 
-			if (isset($erreur1))
-			{
-				echo '<font color="red">'.$erreur1."</font>";
-			}
-			if (isset($erreur1))
-			{
-				echo '<font color="red">'.$erreur1."</font>";
-			}
-			if (isset($erreur2))
-			{
-				echo '<font color="red">'.$erreur2."</font>";
-			}
-			if (isset($ok))
-			{
-				echo '<font color="green">'.$ok."</font>";
-			}
-			?>
+        <h1> Notifications :</h1>
+		
 			<?php
-			
 			try
 			{
 				// On se connecte à MySQL
@@ -55,23 +24,40 @@ if(isset($_POST['submit_recherche'])){
 			}
 
 			// Si tout va bien, on peut continuer
-			// On récupère tout le contenu de la table jeux_video
-			session_start();
-			$blaze=$_SESSION['nom'];
-			$reponse1 = $bdd->query("SELECT * FROM utilisateur WHERE nom='$blaze'");
 
+			// On récupère tout le contenu de la table jeux_video
+			$reponse = $bdd->query('SELECT publieur, date, doc AS type FROM publication UNION SELECT employeur, dateem, poste AS type FROM emploi ORDER BY date DESC');
+			?>
+			
+			<strong>Mes Notifications :</strong> <br><br> 
+			<?php
 			// On affiche chaque entrée une à une
-			while ($donnees = $reponse1->fetch())
+			while ($donnees = $reponse->fetch())
 			{
 			?>
-				<p>
-				<strong>Ami</strong> : <a href=Connection.php><?php echo $donnees['nom']; ?>   <?php echo $donnees['prenom']; ?></a>   <?php echo $donnees['statut']; ?>
-			   </p>
+				<?php
+				if (($donnees['type']=='Photo') || ($donnees['type']=='Video')){
+					echo"".$donnees["publieur"]." a publier une nouvelle ".$donnees["type"]." , le ".$donnees["date"].".";
+					echo"<br><br>";
+				}
+				if ($donnees['type']=='Statut')
+				{
+					echo"".$donnees["publieur"]." a publier un nouveau ".$donnees["type"]." , le ".$donnees["date"].".";
+					echo"<br><br>";
+				}
+				if (($donnees['type']!='Photo') && ($donnees['type']!='Video') && ($donnees['type']!='Statut'))
+				{
+					echo"".$donnees["publieur"]." a publier un nouveau poste de".$donnees["type"]." , le ".$donnees["date"].".";
+					echo"<br><br>";
+				}
+				?>
 			<?php
 			}
 
-			
+			$reponse->closeCursor(); // Termine le traitement de la requête
+
 			?>
+        
 		</div>
 		<div id="menu">
 			<div style="border-color: black" id="menu0"><a href="Accueil.php" >Accueil</a><div>
