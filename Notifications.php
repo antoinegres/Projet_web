@@ -9,7 +9,9 @@
 	</head>
 	
 	<body>
-        <h1> Notifications :</h1>
+		
+		<div id="corps">
+			<h1> Notifications :</h1>
 		
 			<?php
 			try
@@ -26,7 +28,7 @@
 			// Si tout va bien, on peut continuer
 
 			// On récupère tout le contenu de la table jeux_video
-			$reponse = $bdd->query('SELECT publieur, date, doc AS type FROM publication UNION SELECT employeur, dateem, poste AS type FROM emploi ORDER BY date DESC');
+			$reponse = $bdd->query('SELECT publieur, date, doc AS type FROM publication UNION SELECT employeur, dateem, poste AS type FROM emploi ORDER BY date DESC ');
 			?>
 			
 			<strong>Mes Notifications :</strong> <br><br> 
@@ -51,6 +53,9 @@
 					echo"<br><br>";
 				}
 				?>
+				<form method="POST" action=""> 
+                    <input type="submit" value="Supprimer" name="submit2" id="submit2"/>
+				</form>
 			<?php
 			}
 
